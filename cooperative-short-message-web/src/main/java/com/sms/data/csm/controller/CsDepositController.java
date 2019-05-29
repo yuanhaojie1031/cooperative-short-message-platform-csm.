@@ -5,6 +5,7 @@ import com.sms.data.csm.common.BaseResult;
 import com.sms.data.csm.common.ResultCode;
 import com.sms.data.csm.model.CsDeposit;
 import com.sms.data.csm.model.CsUser;
+import com.sms.data.csm.po.CsDepositVo;
 import com.sms.data.csm.service.CsDepositService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -34,9 +35,8 @@ public class CsDepositController extends BaseController {
     @ApiOperation(value = "充值页面", notes = "充值页面")
     @RequestMapping(value = "/deposit", method = RequestMethod.POST)
     @ResponseBody
-    public BaseResult deposit(@RequestBody CsDeposit csDeposit) {
-        csDepositService.insertCsDeposit(csDeposit);
-        return new BaseResult(ResultCode.Success, 0);
+    public BaseResult deposit(@RequestBody CsDepositVo csDepositVo) {
+        return new BaseResult(ResultCode.Success, 0, csDepositService.insertCsDeposit(csDepositVo));
     }
 
 }

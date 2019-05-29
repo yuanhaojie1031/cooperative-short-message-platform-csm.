@@ -5,7 +5,7 @@ import java.util.Date;
 public class CsSmsRecord {
     private int id;
     private Date createTime;
-    private int number;
+    private int smsNumber;
     private int userId;
 
     public int getId() {
@@ -24,12 +24,12 @@ public class CsSmsRecord {
         this.createTime = createTime;
     }
 
-    public int getNumber() {
-        return number;
+    public int getSmsNumber() {
+        return smsNumber;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setSmsNumber(int smsNumber) {
+        this.smsNumber = smsNumber;
     }
 
     public int getUserId() {

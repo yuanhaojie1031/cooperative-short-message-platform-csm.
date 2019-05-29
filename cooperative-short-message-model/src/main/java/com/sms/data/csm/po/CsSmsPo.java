@@ -1,17 +1,17 @@
 package com.sms.data.csm.po;
 
 public class CsSmsPo {
-    private String phone;
+    private String csPhone;
     private String templateCode;
-    private String json;
+    private String csName;
     private int userId;
 
-    public String getPhone() {
-        return phone;
+    public String getCsPhone() {
+        return csPhone;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setCsPhone(String csPhone) {
+        this.csPhone = csPhone;
     }
 
     public String getTemplateCode() {
@@ -22,12 +22,12 @@ public class CsSmsPo {
         this.templateCode = templateCode;
     }
 
-    public String getJson() {
-        return json;
+    public String getCsName() {
+        return csName;
     }
 
-    public void setJson(String json) {
-        this.json = json;
+    public void setCsName(String csName) {
+        this.csName = csName;
     }
 
     public int getUserId() {

@@ -10,9 +10,15 @@
   <sql id="Base_Column_List_CsTemplateCode">
     id,template_code,template_content,create_time
   </sql>
-  <select id="selectCsTemplateCode" resultMap="BaseResultMapCsTemplateCode">
+  <select id="selectCsTemplateCodeAll" resultMap="BaseResultMapCsTemplateCode">
     select
     <include refid="Base_Column_List_CsTemplateCode"/>
     from t_cs_template_code
+  </select>
+
+  <select id="selectCsTemplateCode" resultMap="BaseResultMapCsTemplateCode">
+    select
+    <include refid="Base_Column_List_CsTemplateCode"/>
+    from t_cs_template_code where template_code = #{template_code}
   </select>
 </mapper>

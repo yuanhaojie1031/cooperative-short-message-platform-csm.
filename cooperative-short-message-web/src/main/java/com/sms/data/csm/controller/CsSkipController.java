@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class CsSkipController extends BaseController {
 
     @ApiOperation(value = "登录跳转", notes = "登录跳转")
-    @RequestMapping(value = "/toIndex", method = RequestMethod.GET)
-    public String toIndex() {
-        System.out.println("进入toIndex方法");
-        return "index";
+    @RequestMapping(value = "/toLogin", method = RequestMethod.GET)
+    public String toLogin() {
+        System.out.println("进入toLogin方法");
+        return "login";
     }
 
     @ApiOperation(value = "注册跳转", notes = "注册跳转")
@@ -41,6 +41,6 @@ public class CsSkipController extends BaseController {
     @RequestMapping(value = "/toDeposit", method = RequestMethod.GET)
     public String toDeposit() {
         System.out.println("进入toDeposit方法");
-        return "deposit";
+        return "deposit2";
     }
 }

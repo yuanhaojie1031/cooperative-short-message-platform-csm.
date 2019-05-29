@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sms.data.csm.mapper.CsDepositMapper">
-  <resultMap id="BaseResultMap" type="com.sms.data.csm.model.CsDeposit">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="number" jdbcType="INTEGER" property="number" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    id,number,user_id,create_time
+    <resultMap id="BaseResultMap" type="com.sms.data.csm.model.CsDeposit">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="sms_number" jdbcType="INTEGER" property="smsNumber"/>
+        <result column="user_id" jdbcType="INTEGER" property="userId"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id,sms_number,user_id,create_time,update_time
   </sql>
 
-  <insert id="insertCsDeposit">
-    insert into t_cs_deposit values (#{csDeposit.number},#{csDeposit.userId},#{csDeposit.createTime})
+    <insert id="insertCsDeposit">
+    insert into t_cs_deposit(sms_number,user_id,create_time) values (#{csDeposit.smsNumber},#{csDeposit.userId},#{csDeposit.createTime})
   </insert>
+    <update id="updateCsDeposit">
+        update t_cs_deposit set sms_number =sms_number + #{csDeposit.smsNumber},update_time = #{csDeposit.updateTime} where user_id=#{csDeposit.userId}
+    </update>
 
-  <select id="selectCsDeposit" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List"/>
-    from t_cs_deposit where user_id=#{userId}
-  </select>
+    <select id="selectCsDeposit" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_cs_deposit where user_id=#{userId}
+    </select>
 </mapper>

@@ -4,7 +4,7 @@ import com.sms.data.csm.mapper.CsDepositMapper;
 import com.sms.data.csm.mapper.CsSmsRecordMapper;
 import com.sms.data.csm.model.CsDeposit;
 import com.sms.data.csm.model.CsSmsRecord;
-import com.sms.data.csm.model.CsUser;
+import com.sms.data.csm.po.CsDepositVo;
 import com.sms.data.csm.service.CsDepositService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,21 +20,32 @@ public class CsDepositServiceImpl implements CsDepositService {
     private CsSmsRecordMapper csSmsRecordMapper;
 
     @Autowired
-    public CsDepositServiceImpl(CsDepositMapper csDepositMapper,CsSmsRecordMapper csSmsRecordMapper){
-        this.csDepositMapper=csDepositMapper;
-        this.csSmsRecordMapper=csSmsRecordMapper;
+    public CsDepositServiceImpl(CsDepositMapper csDepositMapper, CsSmsRecordMapper csSmsRecordMapper) {
+        this.csDepositMapper = csDepositMapper;
+        this.csSmsRecordMapper = csSmsRecordMapper;
     }
 
     @Transactional
-    public  void insertCsDeposit(CsDeposit csDeposit){
-        int count =  csDepositMapper.insertCsDeposit(csDeposit);
-        if (count >0) {
-            //插入记录表
-            CsSmsRecord csSmsRecord = new CsSmsRecord();
-            csSmsRecord.setNumber(csDeposit.getNumber());
-            csSmsRecord.setCreateTime(new Date());
-            csSmsRecord.setUserId(csDeposit.getUserId());
-            csSmsRecordMapper.insertCsSmsRecord(csSmsRecord);
+    public CsDeposit insertCsDeposit(CsDepositVo csDepositVo) {
+        //查询充值记录
+        CsDeposit csDepositRes = csDepositMapper.selectCsDeposit(csDepositVo.getUserId());
+        CsDeposit csDeposit = new CsDeposit();
+        csDeposit.setUserId(csDepositVo.getUserId());
+        csDeposit.setSmsNumber(csDepositVo.getSmsNumber());
+        if (csDepositRes != null) {
+            csDeposit.setUpdateTime(new Date());
+            csDepositMapper.updateCsDeposit(csDeposit);
+        } else {
+            csDeposit.setCreateTime(new Date());
+            csDepositMapper.insertCsDeposit(csDeposit);
         }
+        //设置记录表参数
+        CsSmsRecord csSmsRecord = new CsSmsRecord();
+        csSmsRecord.setSmsNumber(csDepositVo.getSmsNumber());
+        csSmsRecord.setCreateTime(new Date());
+        csSmsRecord.setUserId(csDepositVo.getUserId());
+        //插入记录表
+        csSmsRecordMapper.insertCsSmsRecord(csSmsRecord);
+        return csDeposit;
     }
 }

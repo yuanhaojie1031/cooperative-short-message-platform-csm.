@@ -35,11 +35,7 @@ public class CsUserController extends BaseController {
     @ResponseBody
     public BaseResult login(@RequestBody CsUser csUser) {
         System.out.println("进入login方法");
-        CsUser csUserDTO=csUserService.login(csUser);
-//        HttpSession httpSession = new H
-//        CustomToken token = new CustomToken(csUserDTO.getCsName(), csUserDTO.getCsPwd());
-//        SecurityUtils.getSubject().login(token);
-        return new BaseResult(ResultCode.Success, 0);
+        return new BaseResult(ResultCode.Success, 0,csUserService.login(csUser));
     }
 
     @ApiOperation(value = "新增用户", notes = "新增用户")
@@ -51,7 +47,7 @@ public class CsUserController extends BaseController {
     }
 
     @ApiOperation(value = "查询用户列表", notes = "查询用户列表")
-    @RequestMapping(value = "/selectCsUser", method = RequestMethod.POST)
+    @RequestMapping(value = "/selectCsUser", method = RequestMethod.GET)
     @ResponseBody
     public BaseResult selectCsUser() {
         return new BaseResult(ResultCode.Success, 0,csUserService.selectCsUser());

@@ -1,57 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>发送短信页面</title>
-    <link rel="stylesheet" type="text/css" href="/css/regist.css">
+    <link rel="stylesheet" type="text/css" href="../css/regist.css">
 </head>
 <body>
-    <div class="wrapper">
-        <article>
-            <h1><span>合作短信平台</span></h1>
-            <div class="main">
-                <form>
-                    <div class="tel">
-                        <select id="templateCode">
-                            <option value=''>请选择</option>
-                        </select>
-                        <em>请选择要发送的模板ID！</em>
-                    </div>
-                    <div class="tel">
-                        <input type="tel" name="userName" placeholder="手机号"><em>发送的手机号，由11个字符组成！</em>
-                    </div>
-                    <div class="userName">
-                        <input type="text" name="userName" placeholder="用户名"><em>发送的用户名，由5-8个字符组成！</em>
-                    </div>
-                    <button>发送</button>
-                </form>
-            </div>
-        </article>
-    </div>
+<div class="wrapper">
+    <article>
+        <h1><span>合作短信平台</span></h1>
+        <div class="main">
+            <form>
+                <div class="tel">
+                    <select id="templateCode" name="templateCode" style="width: 292px;height: 36px"></select><em>请选择要发送的模板ID！</em>
+                </div>
+                <div class="tel" id="affirmSealDiv"> </div>
+                <div class="tel">
+                    <input type="tel" id="csPhone" name="csPhone" placeholder="手机号"><em>发送的手机号，由11个字符组成！</em>
+                </div>
+                <div class="userName">
+                    <input type="text" id="csName" name="csName" placeholder="用户名"><em>发送的用户名，由5-8个字符组成！</em>
+                </div>
+                <button onclick="sendSms()">发送</button>
+            </form>
+        </div>
+    </article>
+</div>
 
-    <script type="text/javascript" src="/js/jquery.min.js"></script>
-    <script type="text/javascript">
-        //初始化页面
-        $(function(){
-            $.ajax({
-                url:'/csSms/selectCsTemplateCode',
-                type:'get',
-                success:function(result){
-                    if (result.data!=null) {
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript">
+    //初始化页面
+    $(document).ready(function () {
+        $.ajax({
+            url: '/csSms/selectCsTemplateCodeAll',
+            type: 'get',
+            contentType: "application/json",
+            success: function (result) {
+                if (result.data != null) {
+                    var convertLists = result.data;
+                    $.each(convertLists, function (i, item) {
                         $("#templateCode").prepend("<option value='0'>请选择</option>");//添加第一个option值
-                        for(var i=0;i=result.data.length;i++){
-                            alert(result.data[i]);
-                            $("#templateCode").append("<option>"+result.data[i].templateCode+"</option>");
-                        }
-                    }
-                },error:function(){
-                    alertLayer("获取数据失败","error");
+                        $("#templateCode").append("<option value=" + item.templateCode + ">" + item.templateCode + "</option>");
+                    });
                 }
-            })
+            }, error: function () {
+                alertLayer("获取数据失败", "error");
+            }
         });
+    });
+    function sendSms() {
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: '/csSms/sms',
+            contentType: "application/json",
+            data:JSON.stringify({
+                "templateCode" : $("#templateCode").val(),
+                "csName" : $("#csName").val(),
+                "userId" : 2,
+                "csPhone" : $("#csPhone").val()
+            }),
+            success:function (result) {
+                console.log("result is :" + result);
+                alert("进入发送方法");
+                if (result.data!=0) {
+                    alert("发送成功");
+                }else {
+                    alert("余额不足，请及时充值");
+                }
+            }, error: function () {
+                alertLayer("获取数据失败", "error");
+            }
+        });
+    }
 
-    </script>
+</script>
 </body>
 </html>

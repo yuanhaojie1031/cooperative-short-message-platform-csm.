@@ -16,7 +16,7 @@
         select
         <include refid="Base_Column_List"/>
         from t_cs_user
-        where cs_name =#{csUser.csName} and cs_pwd=#{csUser.csPwd}
+        where cs_phone =#{csUser.csPhone} and cs_pwd=#{csUser.csPwd}
     </select>
 
     <select id="selectCsUser" resultMap="BaseResultMap">
@@ -27,6 +27,6 @@
 
     <insert id="insertCsUser">
     insert into t_cs_user(cs_phone,cs_name,cs_pwd,create_time)
-    values (#{csUser.csPhone},#{csUser.csName},#{csUser.csPwd},,#{csUser.csPhone})
+    values (#{csUser.csPhone},#{csUser.csName},#{csUser.csPwd},#{csUser.createTime})
   </insert>
 </mapper>

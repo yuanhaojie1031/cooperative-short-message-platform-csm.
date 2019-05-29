@@ -3,7 +3,6 @@
 <mapper namespace="com.sms.data.csm.mapper.CsSmsMapper">
   <resultMap id="BaseResultMap" type="com.sms.data.csm.model.CsSms">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="number" jdbcType="INTEGER" property="number" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="template_code" jdbcType="VARCHAR" property="templateCode" />
@@ -13,9 +12,11 @@
     <result column="send_time" jdbcType="TIMESTAMP" property="sendTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    id,number,user_id,phone,template_code,send_content,remark,create_time,send_time
+    id,user_id,phone,template_code,send_content,remark,create_time,send_time
   </sql>
   <insert id="insertCsSms">
-    insert into t_cs_sms values (#{csDeposit.number},#{csDeposit.userId},#{csDeposit.createTime})
+    insert into t_cs_sms(user_id,phone,template_code,send_content,remark,create_time,send_time)
+    values (#{csSms.userId},#{csSms.phone},#{csSms.templateCode}
+    ,#{csSms.sendContent},#{csSms.remark},#{csSms.createTime},#{csSms.sendTime})
   </insert>
 </mapper>

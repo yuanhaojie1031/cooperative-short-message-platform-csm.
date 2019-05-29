@@ -6,7 +6,7 @@ public class CsUser {
     private  int id;
     private String csName;
     private String csPwd;
-    private String phone;
+    private String csPhone;
     private Date createTime;
 
     public int getId() {
@@ -33,12 +33,12 @@ public class CsUser {
         this.csPwd = csPwd;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getCsPhone() {
+        return csPhone;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setCsPhone(String csPhone) {
+        this.csPhone = csPhone;
     }
 
     public Date getCreateTime() {

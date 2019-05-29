@@ -51,6 +51,8 @@
                     }else {
                         alert("注册失败");
                     }
+                }, error: function () {
+                    alertLayer("获取数据失败", "error");
                 }
             });
         }

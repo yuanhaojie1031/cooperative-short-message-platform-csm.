@@ -4,9 +4,10 @@ import java.util.Date;
 
 public class CsDeposit {
     private int id;
-    private int number;
+    private int smsNumber;
     private int userId;
     private Date createTime;
+    private Date updateTime;
 
     public int getId() {
         return id;
@@ -16,12 +17,12 @@ public class CsDeposit {
         this.id = id;
     }
 
-    public int getNumber() {
-        return number;
+    public int getSmsNumber() {
+        return smsNumber;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setSmsNumber(int smsNumber) {
+        this.smsNumber = smsNumber;
     }
 
     public int getUserId() {
@@ -38,5 +39,13 @@ public class CsDeposit {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 }

@@ -10,7 +10,8 @@ public interface CsSmsService {
      * 根据模板发送短信
      * @param csSmsPo
      */
-    Integer SendCsSms(CsSmsPo csSmsPo);
-    List<CsTemplateCode> selectCsTemplateCode();
+    int SendCsSms(CsSmsPo csSmsPo);
+    List<CsTemplateCode> selectCsTemplateCodeAll();
+    CsTemplateCode selectCsTemplateCode(String templateCode);
 
 }

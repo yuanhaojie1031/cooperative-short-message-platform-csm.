@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CsDepositMapper {
-    int insertCsDeposit(@Param("csDeposit") CsDeposit csDeposit);
+    void insertCsDeposit(@Param("csDeposit") CsDeposit csDeposit);
+    void updateCsDeposit(@Param("csDeposit") CsDeposit csDeposit);
     CsDeposit selectCsDeposit(@Param("userId") Integer userId);
 }

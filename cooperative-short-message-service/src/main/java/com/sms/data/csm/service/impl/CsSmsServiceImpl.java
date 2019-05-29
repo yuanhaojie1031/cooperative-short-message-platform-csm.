@@ -19,6 +19,7 @@ import com.sms.data.csm.model.CsSms;
 import com.sms.data.csm.model.CsTemplateCode;
 import com.sms.data.csm.po.CsSmsPo;
 import com.sms.data.csm.service.CsSmsService;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,67 +42,77 @@ public class CsSmsServiceImpl implements CsSmsService {
     private CsTemplateCodeMapper csTemplateCodeMapper;
 
     @Autowired
-    public  CsSmsServiceImpl(CsSmsMapper csSmsMapper,CsDepositMapper csDepositMapper,CsTemplateCodeMapper csTemplateCodeMapper){
-        this.csSmsMapper=csSmsMapper;
-        this.csDepositMapper=csDepositMapper;
-        this.csTemplateCodeMapper=csTemplateCodeMapper;
+    public CsSmsServiceImpl(CsSmsMapper csSmsMapper, CsDepositMapper csDepositMapper, CsTemplateCodeMapper csTemplateCodeMapper) {
+        this.csSmsMapper = csSmsMapper;
+        this.csDepositMapper = csDepositMapper;
+        this.csTemplateCodeMapper = csTemplateCodeMapper;
     }
 
     @Transactional
-    public Integer SendCsSms(CsSmsPo csSmsPo) {
-        CsDeposit csDeposit = csDepositMapper.selectCsDeposit(1);
-        if (csDeposit.getNumber() == 0) {
-            return 0;
-        }else{
+    public int SendCsSms(CsSmsPo csSmsPo) {
+        int count = 1;
+        CsDeposit csDeposit = csDepositMapper.selectCsDeposit(csSmsPo.getUserId());
+        if (csDeposit.getSmsNumber() == 0) {
+            count =  0;
+        } else {
             sendSms(csSmsPo);
-            return 1;
         }
-
+    return count;
     }
 
-    public List<CsTemplateCode> selectCsTemplateCode() {
-        return csTemplateCodeMapper.selectCsTemplateCode();
+    public List<CsTemplateCode> selectCsTemplateCodeAll() {
+        return csTemplateCodeMapper.selectCsTemplateCodeAll();
+    }
+
+    public CsTemplateCode selectCsTemplateCode(String templateCode) {
+        return csTemplateCodeMapper.selectCsTemplateCode(templateCode);
     }
 
     private void sendSms(CsSmsPo csSmsPo) {
         try {
             System.setProperty("sun.net.client.defaultConnectTimeout", "10000");
             System.setProperty("sun.net.client.defaultReadTimeout", "10000");
-            IClientProfile profile = DefaultProfile.getProfile("cn-hangzhou", SMSConfig.accessKeyId,SMSConfig.accessKeySecret);
+            IClientProfile profile = DefaultProfile.getProfile("cn-hangzhou", SMSConfig.accessKeyId, SMSConfig.accessKeySecret);
             DefaultProfile.addEndpoint("cn-hangzhou", "cn-hangzhou", SMSConfig.product, SMSConfig.domain);
             IAcsClient acsClient = new DefaultAcsClient(profile);
             SendSmsRequest request = new SendSmsRequest();
             request.setMethod(MethodType.POST);
-//                request.setPhoneNumbers(csSmsPo.getPhone());
-            request.setPhoneNumbers("18707384563");
-                request.setSignName("乡韵轩");
-//                request.setTemplateCode(csSmsPo.getTemplateCode());
-            request.setTemplateCode(SmsTemplate.TEST.getCode());
-            String name = "黄老板";
+            request.setPhoneNumbers(csSmsPo.getCsPhone());
+            request.setSignName("乡韵轩");
+            request.setTemplateCode(csSmsPo.getTemplateCode());
             String time = "2019-05-27";
-            String json = "{\"name\":\""+name + "\",\"time\":\"" + time + "\"}";
-            request.setTemplateParam(json);
-//                if (StringUtils.isNotBlank(csSmsPo.getJson())) {
-//                    request.setTemplateParam(csSmsPo.getJson());
-//                }
+            String json = "{\"name\":\"" + csSmsPo.getCsName() + "\",\"time\":\"" + time + "\"}";
+            if (StringUtils.isNotBlank(json)) {
+                request.setTemplateParam(json);
+            }
             SendSmsResponse sendSmsResponse = acsClient.getAcsResponse(request);
             logger.info("短信发送结果:" + JSON.toJSONString(sendSmsResponse));
             if (sendSmsResponse.getCode() != null && sendSmsResponse.getCode().equals("OK")) {
-                logger.info(csSmsPo.getPhone() + "：短信发送成功！");
-//                // 发送成功，插入数据库
-//                CsSms csSms= new CsSms();
-//                csSms.setPhone(request.getPhoneNumbers());
-//                csSms.setTemplateCode(request.getTemplateCode());
-//                csSms.setUserId(csSmsPo.getUserId());
-//                csSms.setCreateTime(new Date());
-//                csSms.setSendTime(new Date());
-//                csSmsMapper.insertCsSms(csSms);
+                logger.info(csSmsPo.getCsPhone() + "：短信发送成功！");
+                insertSms(csSmsPo, request);
             } else {
-                logger.error(csSmsPo.getPhone() + "：短信发送失败！");
+                logger.error(csSmsPo.getCsPhone() + "：短信发送失败！");
             }
         } catch (ClientException e) {
             logger.error("短信发送异常" + e.getErrCode() + e.getErrMsg());
         }
+    }
+
+    private void insertSms(CsSmsPo csSmsPo, SendSmsRequest request) {
+        // 发送成功，插入Sms记录表
+        CsSms csSms = new CsSms();
+        csSms.setPhone(request.getPhoneNumbers());
+        csSms.setTemplateCode(request.getTemplateCode());
+        csSms.setUserId(csSmsPo.getUserId());
+        csSms.setCreateTime(new Date());
+        csSms.setSendTime(new Date());
+        csSmsMapper.insertCsSms(csSms);
+        //发送成功，减去充值表数值
+        CsDeposit csDeposit = new CsDeposit();
+        csDeposit.setUserId(csSmsPo.getUserId());
+        csDeposit.setSmsNumber(-1);
+        csDeposit.setUpdateTime(new Date());
+        csDepositMapper.updateCsDeposit(csDeposit);
     }
 
 
