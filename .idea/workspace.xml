@@ -2,6 +2,96 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a5c6a303-db6d-475b-875e-1f5a7d8125be" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-api/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-api/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-api/src/main/java/com/sms/data/csm/BaseController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-api/src/main/java/com/sms/data/csm/CustomToken.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-common/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-common/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-common/src/main/java/com/sms/data/csm/common/BaseResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-common/src/main/java/com/sms/data/csm/common/ResultCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-common/src/main/java/com/sms/data/csm/common/SMSConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-common/src/main/java/com/sms/data/csm/enums/LoginType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-common/src/main/java/com/sms/data/csm/enums/SmsTemplate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-model/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-model/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-model/src/main/java/com/sms/data/csm/model/CsDeposit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-model/src/main/java/com/sms/data/csm/model/CsSms.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-model/src/main/java/com/sms/data/csm/model/CsSmsRecord.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-model/src/main/java/com/sms/data/csm/model/CsTemplateCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-model/src/main/java/com/sms/data/csm/model/CsUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-model/src/main/java/com/sms/data/csm/po/CsSmsPo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-service/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-service/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-service/src/main/java/com/sms/data/csm/mapper/CsDepositMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-service/src/main/java/com/sms/data/csm/mapper/CsSmsMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-service/src/main/java/com/sms/data/csm/mapper/CsSmsRecordMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-service/src/main/java/com/sms/data/csm/mapper/CsTemplateCodeMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-service/src/main/java/com/sms/data/csm/mapper/CsUserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-service/src/main/java/com/sms/data/csm/service/CsDepositService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-service/src/main/java/com/sms/data/csm/service/CsSmsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-service/src/main/java/com/sms/data/csm/service/CsUserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-service/src/main/java/com/sms/data/csm/service/impl/CsDepositServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-service/src/main/java/com/sms/data/csm/service/impl/CsSmsServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-service/src/main/java/com/sms/data/csm/service/impl/CsUserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-service/src/main/resources/mapper/CsDepositMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-service/src/main/resources/mapper/CsSmsMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-service/src/main/resources/mapper/CsSmsRecordMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-service/src/main/resources/mapper/CsTemplateCodeMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-service/src/main/resources/mapper/CsUserMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/java/com/sms/data/csm/CooperativeShortMessageWebApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/java/com/sms/data/csm/Swagger2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/java/com/sms/data/csm/controller/CsDepositController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/java/com/sms/data/csm/controller/CsSkipController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/java/com/sms/data/csm/controller/CsSmsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/java/com/sms/data/csm/controller/CsUserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/application-dev.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/application-prd.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/application-test.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/static/css/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/static/css/regist.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/static/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/static/img/_21.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/static/img/b2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/static/img/bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/static/img/bg1.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/static/img/bg1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/static/img/bj.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/static/img/bj2.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/static/img/bj3.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/static/img/bj5.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/static/img/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/static/img/icon1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/static/img/icon2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/static/img/icon3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/static/img/icon4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/static/img/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/static/img/on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/static/img/password1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/static/img/password2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/static/img/rememberPassword1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/static/img/rememberPassword2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/static/img/user.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/static/img/user1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/static/img/user2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/static/img/user4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/static/js/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/static/js/vector.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/templates/deposit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/templates/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/templates/index1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/templates/regist.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/templates/sms.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cooperative-short-message-web/src/test/java/com/sms/data/csm/CooperativeShortMessageWebApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../dfc-express-vehicle-merge-plugin/express-vehicle-merge-common/pom.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../dfc-express-vehicle-merge-plugin/express-vehicle-merge-plugin/pom.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../dfc-express-vehicle-merge-plugin/express-vehicle-merge-plugin/src/main/java/com/deppon/data/platform/express/vehicle/plugin/ExpressVehiclePlugin.java" beforeDir="false" />
@@ -70,7 +160,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/templates/sms.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
+            <state relative-caret-position="713">
               <caret line="31" column="10" lean-forward="true" selection-start-line="31" selection-start-column="10" selection-end-line="31" selection-end-column="10" />
             </state>
           </provider>
@@ -162,7 +252,7 @@
     </findStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -252,160 +342,6 @@
               <item name="cooperative-short-message-platform-csm" type="b2602c69:ProjectViewProjectNode" />
               <item name="cooperative-short-message-platform-csm" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="cooperative-short-message-platform-csm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cooperative-short-message-platform-csm" type="462c0819:PsiDirectoryNode" />
-              <item name="cooperative-short-message-service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cooperative-short-message-platform-csm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cooperative-short-message-platform-csm" type="462c0819:PsiDirectoryNode" />
-              <item name="cooperative-short-message-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cooperative-short-message-platform-csm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cooperative-short-message-platform-csm" type="462c0819:PsiDirectoryNode" />
-              <item name="cooperative-short-message-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cooperative-short-message-platform-csm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cooperative-short-message-platform-csm" type="462c0819:PsiDirectoryNode" />
-              <item name="cooperative-short-message-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cooperative-short-message-platform-csm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cooperative-short-message-platform-csm" type="462c0819:PsiDirectoryNode" />
-              <item name="cooperative-short-message-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="csm" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cooperative-short-message-platform-csm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cooperative-short-message-platform-csm" type="462c0819:PsiDirectoryNode" />
-              <item name="cooperative-short-message-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="csm" type="462c0819:PsiDirectoryNode" />
-              <item name="mapper" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cooperative-short-message-platform-csm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cooperative-short-message-platform-csm" type="462c0819:PsiDirectoryNode" />
-              <item name="cooperative-short-message-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="csm" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cooperative-short-message-platform-csm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cooperative-short-message-platform-csm" type="462c0819:PsiDirectoryNode" />
-              <item name="cooperative-short-message-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="csm" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cooperative-short-message-platform-csm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cooperative-short-message-platform-csm" type="462c0819:PsiDirectoryNode" />
-              <item name="cooperative-short-message-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cooperative-short-message-platform-csm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cooperative-short-message-platform-csm" type="462c0819:PsiDirectoryNode" />
-              <item name="cooperative-short-message-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="mapper" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cooperative-short-message-platform-csm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cooperative-short-message-platform-csm" type="462c0819:PsiDirectoryNode" />
-              <item name="cooperative-short-message-web" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cooperative-short-message-platform-csm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cooperative-short-message-platform-csm" type="462c0819:PsiDirectoryNode" />
-              <item name="cooperative-short-message-web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cooperative-short-message-platform-csm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cooperative-short-message-platform-csm" type="462c0819:PsiDirectoryNode" />
-              <item name="cooperative-short-message-web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cooperative-short-message-platform-csm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cooperative-short-message-platform-csm" type="462c0819:PsiDirectoryNode" />
-              <item name="cooperative-short-message-web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cooperative-short-message-platform-csm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cooperative-short-message-platform-csm" type="462c0819:PsiDirectoryNode" />
-              <item name="cooperative-short-message-web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="csm" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cooperative-short-message-platform-csm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cooperative-short-message-platform-csm" type="462c0819:PsiDirectoryNode" />
-              <item name="cooperative-short-message-web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="csm" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cooperative-short-message-platform-csm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cooperative-short-message-platform-csm" type="462c0819:PsiDirectoryNode" />
-              <item name="cooperative-short-message-web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cooperative-short-message-platform-csm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cooperative-short-message-platform-csm" type="462c0819:PsiDirectoryNode" />
-              <item name="cooperative-short-message-web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cooperative-short-message-platform-csm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cooperative-short-message-platform-csm" type="462c0819:PsiDirectoryNode" />
-              <item name="cooperative-short-message-web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -421,7 +357,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559090576119" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559090810446" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -487,17 +423,17 @@
       <option name="presentableId" value="Default" />
       <updated>1558953227177</updated>
       <workItem from="1558953228492" duration="2754000" />
-      <workItem from="1558956183088" duration="13911000" />
+      <workItem from="1558956183088" duration="14149000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16665000" />
+    <option name="totallyTimeSpent" value="16903000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24964234" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27038628" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -926,7 +862,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cooperative-short-message-web/src/main/resources/templates/sms.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
+        <state relative-caret-position="713">
           <caret line="31" column="10" lean-forward="true" selection-start-line="31" selection-start-column="10" selection-end-line="31" selection-end-column="10" />
         </state>
       </provider>
