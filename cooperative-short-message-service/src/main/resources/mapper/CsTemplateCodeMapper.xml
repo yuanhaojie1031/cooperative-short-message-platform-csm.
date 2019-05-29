@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sms.data.csm.mapper.CsTemplateCodeMapper">
+  <resultMap id="BaseResultMapCsTemplateCode" type="com.sms.data.csm.model.CsTemplateCode">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="template_code" jdbcType="VARCHAR" property="templateCode" />
+    <result column="template_content" jdbcType="VARCHAR" property="templateContent" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List_CsTemplateCode">
+    id,template_code,template_content,create_time
+  </sql>
+  <select id="selectCsTemplateCode" resultMap="BaseResultMapCsTemplateCode">
+    select
+    <include refid="Base_Column_List_CsTemplateCode"/>
+    from t_cs_template_code
+  </select>
+</mapper>

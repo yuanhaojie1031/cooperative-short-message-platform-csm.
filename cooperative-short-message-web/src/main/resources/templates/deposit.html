@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>充值页面</title>
+    <link rel="stylesheet" type="text/css" href="/css/regist.css">
+</head>
+<body>
+    <div class="wrapper">
+        <article>
+            <h1><span>合作短信平台</span></h1>
+            <div class="main">
+                <form>
+                    <div class="userName">
+                        <input type="text" name="userName" placeholder="用户名"><em>由5-8个字符组成！</em>
+                    </div>
+                    <div class="password">
+                        <input type="text" name="number" placeholder="充值条数"><em>充值条数</em>
+                    </div>
+                    <div class="againpwd">
+                        <input type="password" name="pwd" placeholder="再次输入密码"><em>两次密码不一致</em>
+                    </div>
+                    <button>充值</button>
+                </form>
+            </div>
+        </article>
+    </div>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript">
+        //初始化页面
+        $(function(){
+            $.ajax({
+                url:'/csSms/selectCsTemplateCode',
+                type:'get',
+                success:function(result){
+                    if (result.data!=null) {
+                        $("#templateCode").prepend("<option value='0'>请选择</option>");//添加第一个option值
+                        for(var i=0;i=result.data.size();i++){
+                            alert(result.data[i]);
+                            $("#templateCode").append("<option>"+result.data[i].templateCode+"</option>");
+                        }
+                    }
+                },error:function(){
+                    alertLayer("获取数据失败","error");
+                }
+            })
+        });
+
+    </script>
+</body>
+</html>
