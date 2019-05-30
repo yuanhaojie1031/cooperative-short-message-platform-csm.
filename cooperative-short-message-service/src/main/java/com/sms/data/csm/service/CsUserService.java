@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface CsUserService {
     CsUser login(CsUser csUser);
-    void insertCsUser(CsUser csUser);
+    int insertCsUser(CsUser csUser);
     List<CsUser> selectCsUser();
 }

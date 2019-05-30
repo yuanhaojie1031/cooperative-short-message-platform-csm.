@@ -1,68 +1,93 @@
-﻿<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<meta http-equiv="content-type" content="text/html;charset=utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>用户登录</title>
-
-<link rel="stylesheet" type="text/css" href="../css/style.css">
+    <meta charset="UTF-8">
+    <title>登陆页面</title>
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
 </head>
 <body>
+    <div class="container">
+        <div class="wrap">
+            <header><em>合作</em><span>短信平台</span></header>
+            <article>
+                <section>
+                    <aside>
+                        <em>
+                            <img src="/img/user.png">
+                        </em>
+                         <form action="" method="post">
+                            <p class="name"><i></i><input type="text" id="csPhone" name="csPhone" class="userName" placeholder="请输入手机号"></p>
+                            <p class="password"><i></i><input type="password" id="csPwd" name="csPwd" class="pwd" placeholder="请输入密码"></p>
+                            <button type="button" onclick="login()">登录</button>
+                            <p class="remember"></p>
+                            <p class="regist"><span>没有账号?</span><a href="/csSkip/toRegist">立即注册</a></p>
+                            <div class="clear"></div>
+                        </form>
+                    </aside>
 
-<div id="container">
-	<div id="output">
-		<div class="containerT">
-			<h1>用户登录</h1>
-			<form class="form">
-				<input type="text" placeholder="用户名" id="csPhone" />
-				<input type="password" placeholder="密码" id="csPwd" />
-				<button type="button" onclick="login()" id="entry_btn">登录</button>
-				<div id="prompt" class="prompt"></div>
-			</form>
-		</div>
-	</div>
-</div>
+                </section>
+            </article>
+        </div>
+    </div>
 
-
-<script type="text/javascript" src="../js/jquery.min.js"></script>
-<script type="text/javascript" src="../js/vector.js"></script>
-<script type="text/javascript">
-    $(function(){
-        Victor("container", "output");   //登录背景函数
-        $("#entry_name").focus();
-        $(document).keydown(function(event){
-            if(event.keyCode==13){
-                $("#entry_btn").click();
-            }
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $(".name input").focus(function(){
+                $(this).prev("i").css({"background-image":"url(/img/user2.png)"});
+            });
+            $(".name input").blur(function(){
+                $(this).prev("i").css({"background-image":"url(/img/user1.png)"});
+            });
+            $(".password input").focus(function(){
+                $(this).prev("i").css({"background-image":"url(/img/password2.png)"});
+            });
+            $(".password input").blur(function(){
+                $(this).prev("i").css({"background-image":"url(/img/password1.png)"});
+            });
         });
-    });
-</script>
+    </script>
 
-<script type="text/javascript">
-	function login() {
-		$.ajax({
-			type: "POST",
-			dataType: "json",
-			url: '/csUser/login',
-			contentType: "application/json",
-			data:JSON.stringify({
-				"csPhone" : $("#csPhone").val(),
-				"csPwd" : $("#csPwd").val()
-			}),
-			success: function (result) {
-				console.log("result is :" + result);
-				if (result.data!=null) {
-					alert("登陆成功");
-					window.location.href = "/csSkip/toSms";
-				}else {
-					alert("用户名或密码错误");
-				}
-			},error: function () {
-				alertLayer("获取数据失败", "error");
-			}
-		});
-	}
-</script>
+    <script type="text/javascript">
+        function login() {
+            var csPhone = $("#csPhone").val();
+            var csPwd = $("#csPwd").val();
+            if (csPhone.length < 1||csPwd.length < 1){
+                MyAlert("用户名或密码不能为空");
+            }
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: '/csUser/login',
+                contentType: "application/json",
+                data:JSON.stringify({
+                    "csPhone" : csPhone,
+                    "csPwd" : csPwd
+                }),
+                success: function (result) {
+                    console.log("result is :" + result);
+                    if (result.data!=null) {
+                        alert("登陆成功");
+                        window.location.href = "/csSkip/toSms";
+                    }else {
+                        alert("用户名或密码错误");
+                    }
+                },error: function () {
+                    alertLayer("获取数据失败", "error");
+                }
+            });
+        }
+
+        function MyAlert(s) {
+            var div = document.getElementById('divAlert');
+            if (!div) {
+                div = document.createElement('div');
+                div.id = 'divAlert';
+                div.style.cssText = 'background:#fff;border:solid 1px #999;color:red;position:fixed;left:50%;top:50%;width:300px;height:200px;overflow:auto;margin-left:-150px;margin-top:-100px';
+                document.body.appendChild(div);
+            }
+            div.innerHTML = s+'<br/><input type="button"  value="确定" onclick="this.parentNode.style.display=\'none\'">';
+        }
+    </script>
 </body>
 </html>

@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -34,7 +36,9 @@ public class CsSmsController extends BaseController {
     @ApiOperation(value = "消息发送页面", notes = "消息发送页面")
     @RequestMapping(value = "/sms", method = RequestMethod.POST)
     @ResponseBody
-    public BaseResult sms(@RequestBody CsSmsPo csSmsPo) {
+    public BaseResult sms(@RequestBody CsSmsPo csSmsPo, HttpServletRequest request) {
+        HttpSession session=request.getSession();
+        csSmsPo.setUserId(Integer.parseInt(String.valueOf(session.getAttribute("userId"))));
         return new BaseResult(ResultCode.Success, 0,smsService.SendCsSms(csSmsPo));
     }
 

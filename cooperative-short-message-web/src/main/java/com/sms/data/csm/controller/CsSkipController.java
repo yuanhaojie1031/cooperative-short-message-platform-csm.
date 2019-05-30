@@ -41,6 +41,6 @@ public class CsSkipController extends BaseController {
     @RequestMapping(value = "/toDeposit", method = RequestMethod.GET)
     public String toDeposit() {
         System.out.println("进入toDeposit方法");
-        return "deposit2";
+        return "deposit";
     }
 }

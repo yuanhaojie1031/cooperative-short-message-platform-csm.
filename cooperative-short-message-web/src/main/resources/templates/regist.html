@@ -26,7 +26,7 @@
                     <div class="againpwd">
                         <input type="password" name="csPwd" placeholder="再次输入密码"><em>两次密码不一致</em>
                     </div>
-                    <button onclick="regist()">注册</button>
+                    <button type="button" onclick="regist()">注册</button>
                 </form>
             </div>
         </article>
@@ -46,8 +46,9 @@
                 }),
                 success: function (result) {
                     console.log("result is :" + result);
-                    if (result.success) {
+                    if (result.data==1) {
                         alert("注册成功");
+                        window.location.href = "/csSkip/toLogin";
                     }else {
                         alert("注册失败");
                     }

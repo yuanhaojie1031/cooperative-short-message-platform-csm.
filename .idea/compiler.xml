@@ -9,7 +9,6 @@
         <module name="cooperative-short-message-api" />
         <module name="cooperative-short-message-common" />
         <module name="cooperative-short-message-model" />
-        <module name="cooperative-short-message-platform-csm" />
         <module name="cooperative-short-message-service" />
         <module name="cooperative-short-message-web" />
       </profile>

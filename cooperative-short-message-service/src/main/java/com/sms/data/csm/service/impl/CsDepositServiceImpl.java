@@ -4,7 +4,6 @@ import com.sms.data.csm.mapper.CsDepositMapper;
 import com.sms.data.csm.mapper.CsSmsRecordMapper;
 import com.sms.data.csm.model.CsDeposit;
 import com.sms.data.csm.model.CsSmsRecord;
-import com.sms.data.csm.po.CsDepositVo;
 import com.sms.data.csm.service.CsDepositService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,12 +25,9 @@ public class CsDepositServiceImpl implements CsDepositService {
     }
 
     @Transactional
-    public CsDeposit insertCsDeposit(CsDepositVo csDepositVo) {
+    public int insertCsDeposit(CsDeposit csDeposit) {
         //查询充值记录
-        CsDeposit csDepositRes = csDepositMapper.selectCsDeposit(csDepositVo.getUserId());
-        CsDeposit csDeposit = new CsDeposit();
-        csDeposit.setUserId(csDepositVo.getUserId());
-        csDeposit.setSmsNumber(csDepositVo.getSmsNumber());
+        CsDeposit csDepositRes = csDepositMapper.selectCsDeposit(csDeposit.getUserId());
         if (csDepositRes != null) {
             csDeposit.setUpdateTime(new Date());
             csDepositMapper.updateCsDeposit(csDeposit);
@@ -41,11 +37,11 @@ public class CsDepositServiceImpl implements CsDepositService {
         }
         //设置记录表参数
         CsSmsRecord csSmsRecord = new CsSmsRecord();
-        csSmsRecord.setSmsNumber(csDepositVo.getSmsNumber());
+        csSmsRecord.setSmsNumber(csDeposit.getSmsNumber());
         csSmsRecord.setCreateTime(new Date());
-        csSmsRecord.setUserId(csDepositVo.getUserId());
+        csSmsRecord.setUserId(csDeposit.getUserId());
         //插入记录表
         csSmsRecordMapper.insertCsSmsRecord(csSmsRecord);
-        return csDeposit;
+        return 1;
     }
 }

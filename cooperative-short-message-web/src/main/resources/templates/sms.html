@@ -23,7 +23,7 @@
                 <div class="userName">
                     <input type="text" id="csName" name="csName" placeholder="用户名"><em>发送的用户名，由5-8个字符组成！</em>
                 </div>
-                <button onclick="sendSms()">发送</button>
+                <button type="button" onclick="sendSms()">发送</button>
             </form>
         </div>
     </article>
@@ -59,14 +59,14 @@
             data:JSON.stringify({
                 "templateCode" : $("#templateCode").val(),
                 "csName" : $("#csName").val(),
-                "userId" : 2,
                 "csPhone" : $("#csPhone").val()
             }),
             success:function (result) {
                 console.log("result is :" + result);
-                alert("进入发送方法");
-                if (result.data!=0) {
+                if (result.data==1) {
                     alert("发送成功");
+                    $("#csPhone").val("").focus();
+                    $("#csName").val("");
                 }else {
                     alert("余额不足，请及时充值");
                 }

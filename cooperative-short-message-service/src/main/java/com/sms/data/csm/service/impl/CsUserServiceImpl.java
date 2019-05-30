@@ -23,9 +23,9 @@ public class CsUserServiceImpl implements CsUserService {
         return csUserMapper.login(csUser);
     }
 
-    public void insertCsUser(CsUser csUser){
+    public int insertCsUser(CsUser csUser){
         csUser.setCreateTime(new Date());
-        csUserMapper.insertCsUser(csUser);
+        return csUserMapper.insertCsUser(csUser);
     }
 
     public List<CsUser> selectCsUser(){

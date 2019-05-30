@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 /**
  * 用户入口
  * 2019-05-21
@@ -33,17 +36,18 @@ public class CsUserController extends BaseController {
     @ApiOperation(value = "用户登录", notes = "用户登录")
     @RequestMapping(value = "/login", method = RequestMethod.POST )
     @ResponseBody
-    public BaseResult login(@RequestBody CsUser csUser) {
-        System.out.println("进入login方法");
-        return new BaseResult(ResultCode.Success, 0,csUserService.login(csUser));
+    public BaseResult login(@RequestBody CsUser csUser, HttpServletRequest request) {
+        CsUser csUserDTO = csUserService.login(csUser);
+        HttpSession session=request.getSession();
+        session.setAttribute("userId",csUserDTO.getId());
+        return new BaseResult(ResultCode.Success, 0,csUserDTO);
     }
 
     @ApiOperation(value = "新增用户", notes = "新增用户")
     @RequestMapping(value = "/insertCsUser", method = RequestMethod.POST)
     @ResponseBody
     public BaseResult insertCsUser(@RequestBody CsUser csUser) {
-        csUserService.insertCsUser(csUser);
-        return new BaseResult(ResultCode.Success, 0);
+        return new BaseResult(ResultCode.Success, 0,csUserService.insertCsUser(csUser));
     }
 
     @ApiOperation(value = "查询用户列表", notes = "查询用户列表")
