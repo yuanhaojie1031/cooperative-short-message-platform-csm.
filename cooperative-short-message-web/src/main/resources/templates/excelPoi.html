@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>excel文档上传页面</title>
+    <link rel="stylesheet" type="text/css" href="/css/regist.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+</head>
+<body>
+<div class="wrapper">
+    <article>
+        <h1><span>合作短信平台</span></h1>
+        <div class="main">
+            <form action="/csSms/excelSms" enctype="multipart/form-data" method="post">
+                <div class="tel">
+                    <input type="file" id="smsFile" name="smsFile" placeholder="上传文档"><em>请上传需要发送的文档</em>
+                </div>
+                <button type="submit">上传</button>
+            </form>
+        </div>
+    </article>
+</div>
+</body>
+</html>

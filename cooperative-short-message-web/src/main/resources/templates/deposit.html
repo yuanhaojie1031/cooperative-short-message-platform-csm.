@@ -1,73 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>充值页面</title>
     <link rel="stylesheet" type="text/css" href="/css/regist.css">
 </head>
 <body>
-    <div class="wrapper">
-        <article>
-            <h1><span>合作短信平台</span></h1>
-            <div class="main">
-                <form>
-                    <div class="tel">
-                        <select id="userId" name="userId" style="width: 292px;height: 36px"></select><em>请选择要充值的用户！</em>
-                    </div>
-                    <div class="password">
-                        <input type="text" id="smsNumber" name="smsNumber" placeholder="充值条数"><em>充值条数</em>
-                    </div>
-                    <button type="button" onclick="deposit()">充值</button>
-                </form>
-            </div>
-        </article>
-    </div>
-    <script type="text/javascript" src="/js/jquery.min.js"></script>
-    <script type="text/javascript">
-        //初始化页面
-        $(document).ready(function () {
-            $.ajax({
-                url: '/csUser/selectCsUser',
-                type: 'get',
-                contentType: "application/json",
-                success: function (result) {
-                    if (result.data != null) {
-                        var convertLists = result.data;
-                        $("#userId").prepend("<option value='0'>请选择</option>");//添加第一个option值
-                        $.each(convertLists, function (i, item) {
-                            $("#userId").append("<option value=" + item.id + ">" + item.csPhone+'-----'+item.csName + "</option>");
-                        });
-                    }
-                }, error: function () {
-                    alert("获取数据失败", "error");
+<div class="wrapper">
+    <article>
+        <h1><span>合作短信平台</span></h1>
+        <div class="main">
+            <form>
+                <div class="tel">
+                    <select id="userId" name="userId" style="width: 292px;height: 36px"></select><em>请选择要充值的用户！</em>
+                </div>
+                <div class="password">
+                    <input type="text" id="smsNumber" name="smsNumber" placeholder="充值条数"><em>充值条数</em>
+                </div>
+                <button type="button" onclick="deposit()">充值</button>
+            </form>
+        </div>
+    </article>
+</div>
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript">
+    //初始化页面
+    $(document).ready(function () {
+        $.ajax({
+            url: '/csUser/selectCsUser',
+            type: 'get',
+            contentType: "application/json",
+            success: function (result) {
+                if (result.data != null) {
+                    var convertLists = result.data;
+                    $("#userId").prepend("<option value='0'>请选择</option>");//添加第一个option值
+                    $.each(convertLists, function (i, item) {
+                        $("#userId").append("<option value=" + item.id + ">" + item.csPhone + '-----' + item.csName + "</option>");
+                    });
                 }
-            });
+            }, error: function () {
+                alert("获取数据失败", "error");
+            }
         });
+    });
 
-        function deposit() {
+    function deposit() {
+        var userId = $("#userId").val();
+        var smsNumber = $("#smsNumber").val();
+        if (userId.length < 1 || smsNumber.length < 1) {
+            alert("用户和充值条数不能为空");
+        } else {
             $.ajax({
                 type: "POST",
                 dataType: "json",
                 url: '/csDeposit/deposit',
                 contentType: "application/json",
-                data:JSON.stringify({
-                    "userId" : $("#userId").val(),
-                    "smsNumber" : $("#smsNumber").val()
+                data: JSON.stringify({
+                    "userId": userId,
+                    "smsNumber": smsNumber
                 }),
                 success: function (result) {
                     console.log("result is :" + result);
-                    if (result.data==1) {
+                    if (result.data == 1) {
                         alert("充值成功");
-                    }else {
+                    } else {
                         alert("充值失败");
                     }
                 }, error: function () {
-                    alertLayer("获取数据失败", "error");
+                    alert("获取数据失败", "error");
                 }
             });
         }
-    </script>
+    }
+</script>
 </body>
 </html>

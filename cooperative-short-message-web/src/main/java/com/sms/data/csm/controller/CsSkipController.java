@@ -37,6 +37,13 @@ public class CsSkipController extends BaseController {
         return "sms";
     }
 
+    @ApiOperation(value = "发送跳转", notes = "发送跳转")
+    @RequestMapping(value = "/toExcelPoi", method = RequestMethod.GET)
+    public String toExcelPoi() {
+        System.out.println("进入toExcelPoi方法");
+        return "excelPoi";
+    }
+
     @ApiOperation(value = "充值跳转", notes = "充值跳转")
     @RequestMapping(value = "/toDeposit", method = RequestMethod.GET)
     public String toDeposit() {

@@ -24,6 +24,9 @@
                     <input type="text" id="csName" name="csName" placeholder="用户名"><em>发送的用户名，由5-8个字符组成！</em>
                 </div>
                 <button type="button" onclick="sendSms()">发送</button>
+                <div class="userName">
+                    <p class="regist"><a href="/csSkip/toExcelPoi">批量发送</a><em>批量发送入口</em></p>
+                </div>
             </form>
         </div>
     </article>
@@ -40,40 +43,49 @@
             success: function (result) {
                 if (result.data != null) {
                     var convertLists = result.data;
+                    $("#templateCode").prepend("<option value='0'>请选择</option>");//添加第一个option值
                     $.each(convertLists, function (i, item) {
-                        $("#templateCode").prepend("<option value='0'>请选择</option>");//添加第一个option值
                         $("#templateCode").append("<option value=" + item.templateCode + ">" + item.templateCode + "</option>");
                     });
                 }
             }, error: function () {
-                alertLayer("获取数据失败", "error");
+                alert("获取数据失败", "error");
             }
         });
     });
     function sendSms() {
-        $.ajax({
-            type: "POST",
-            dataType: "json",
-            url: '/csSms/sms',
-            contentType: "application/json",
-            data:JSON.stringify({
-                "templateCode" : $("#templateCode").val(),
-                "csName" : $("#csName").val(),
-                "csPhone" : $("#csPhone").val()
-            }),
-            success:function (result) {
-                console.log("result is :" + result);
-                if (result.data==1) {
-                    alert("发送成功");
-                    $("#csPhone").val("").focus();
-                    $("#csName").val("");
-                }else {
-                    alert("余额不足，请及时充值");
+        var templateCode = $("#templateCode").val();
+        var csName = $("#csName").val();
+        var csPhone = $("#csPhone").val();
+        if (templateCode.length < 1||csName.length < 1||csPhone.length < 1){
+            alert("发送模板、手机号和用户名不能为空");
+        }else{
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: '/csSms/sms',
+                contentType: "application/json",
+                data:JSON.stringify({
+                    "templateCode" : templateCode,
+                    "csName" : csName,
+                    "csPhone" : csPhone
+                }),
+                success:function (result) {
+                    console.log("result is :" + result);
+                    if (result.data==1) {
+                        alert("发送成功");
+                        window.location.reload();
+                        // $("#csPhone").val("").focus();
+                        // $("#csName").val("");
+                    }else {
+                        alert("余额不足，请及时充值");
+                    }
+                }, error: function () {
+                    alert("获取数据失败", "error");
                 }
-            }, error: function () {
-                alertLayer("获取数据失败", "error");
-            }
-        });
+            });
+        }
+
     }
 
 </script>

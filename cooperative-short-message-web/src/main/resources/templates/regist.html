@@ -34,28 +34,35 @@
     <script type="text/javascript" src="../js/jquery.min.js"></script>
     <script type="text/javascript">
         function regist() {
-            $.ajax({
-                type: "POST",
-                dataType: "json",
-                url: '/csUser/insertCsUser',
-                contentType: "application/json",
-                data:JSON.stringify({
-                    "csPhone" : $("#csPhone").val(),
-                    "csName" : $("#csName").val(),
-                    "csPwd" : $("#csPwd").val()
-                }),
-                success: function (result) {
-                    console.log("result is :" + result);
-                    if (result.data==1) {
-                        alert("注册成功");
-                        window.location.href = "/csSkip/toLogin";
-                    }else {
-                        alert("注册失败");
+            var csPhone = $("#csPhone").val();
+            var csName = $("#csName").val();
+            var csPwd = $("#csPwd").val();
+            if (csPhone.length < 1||csName.length < 1||csPwd.length < 1){
+                alert("手机号、用户名和密码不能为空");
+            }else {
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: '/csUser/insertCsUser',
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        "csPhone": csPhone,
+                        "csName": csName,
+                        "csPwd": csPwd
+                    }),
+                    success: function (result) {
+                        console.log("result is :" + result);
+                        if (result.data == 1) {
+                            alert("注册成功");
+                            window.location.href = "/csSkip/toLogin";
+                        } else {
+                            alert("注册失败");
+                        }
+                    }, error: function () {
+                        alert("获取数据失败", "error");
                     }
-                }, error: function () {
-                    alertLayer("获取数据失败", "error");
-                }
-            });
+                });
+            }
         }
     </script>
 </body>

@@ -52,12 +52,20 @@ public class CsSmsServiceImpl implements CsSmsService {
     public int SendCsSms(CsSmsPo csSmsPo) {
         int count = 1;
         CsDeposit csDeposit = csDepositMapper.selectCsDeposit(csSmsPo.getUserId());
-        if (csDeposit.getSmsNumber() == 0) {
-            count =  0;
+        if (csDeposit == null) {
+            count = 0;
         } else {
-            sendSms(csSmsPo);
+            if (csDeposit.getSmsNumber() == 0) {
+                count = 0;
+            } else {
+                sendSms(csSmsPo);
+            }
         }
-    return count;
+        return count;
+    }
+
+    public void SendBatchCsSms(CsSmsPo csSmsPo) {
+        sendSms(csSmsPo);
     }
 
     public List<CsTemplateCode> selectCsTemplateCodeAll() {
@@ -78,13 +86,12 @@ public class CsSmsServiceImpl implements CsSmsService {
             SendSmsRequest request = new SendSmsRequest();
             request.setMethod(MethodType.POST);
             request.setPhoneNumbers(csSmsPo.getCsPhone());
-            request.setSignName("乡韵轩");
             request.setTemplateCode(csSmsPo.getTemplateCode());
-            String time = "2019-05-27";
-            String json = "{\"name\":\"" + csSmsPo.getCsName() + "\",\"time\":\"" + time + "\"}";
+            String json = selectTemplateCode(csSmsPo);
             if (StringUtils.isNotBlank(json)) {
                 request.setTemplateParam(json);
             }
+            request.setSignName("XYX");
             SendSmsResponse sendSmsResponse = acsClient.getAcsResponse(request);
             logger.info("短信发送结果:" + JSON.toJSONString(sendSmsResponse));
             if (sendSmsResponse.getCode() != null && sendSmsResponse.getCode().equals("OK")) {
@@ -96,6 +103,23 @@ public class CsSmsServiceImpl implements CsSmsService {
         } catch (ClientException e) {
             logger.error("短信发送异常" + e.getErrCode() + e.getErrMsg());
         }
+    }
+
+    private String selectTemplateCode(CsSmsPo csSmsPo) {
+        System.out.println("调用selectTemplateCode方法");
+        String json = null;
+        if ("SMS_167181265".equals(csSmsPo.getTemplateCode())) {
+            json = "{\"name\":\"" + csSmsPo.getCsName() + "\",\"foradd\":\"涉嫌恶意拖欠，多次催收\",\"conx\":\"相关材料\",\"content\":\"司法机关处理\",\"csphone\":\"17743598872\"}";
+        } else if ("SMS_167181271".equals(csSmsPo.getTemplateCode())) {
+            json = "{\"name\":\"" + csSmsPo.getCsName() + "\",\"foradd\":\"严重逾期情况，以及警告无效，\",\"conx\":\"案处理，保全国家资产，\",\"content\":\"立即还款，以免\",\"sendtext\":\"不良记录\",\"foreach\":\"刑事案件\",\"manage\":\"引起恶性后果\",\"csphone\":\"16602257788\"}";
+        } else if ("SMS_167370558".equals(csSmsPo.getTemplateCode())) {
+            json = "{\"name\":\"" + csSmsPo.getCsName() + "\",\"foradd\":\"欠款长时间逾期，\",\"text\":\"报失信被执行人名单，\",\"conx\":\"法院向社会公布\",\"sendtext\":\"施强制划扣、限制融资\",\"forback\":\"限制高消费等惩戒。12小时内\",\"handle\":\"上报名单\",\"manage\":\"案件负责人协商还款\",\"phone\":\"16601157503\"}";
+        } else if ("SMS_167365639".equals(csSmsPo.getTemplateCode())) {
+            json = "{\"name\":\"" + csSmsPo.getCsName() + "\",\"foradd\":\"美团欠款一案多次\",\"text\":\"均不理会，恶意逃避催收\",\"manage\":\"立即采取报案措施，具体\",\"csphone\":\"16601157503\"}";
+        } else if ("SMS_167365644".equals(csSmsPo.getTemplateCode())) {
+            json = "{\"name\":\"" + csSmsPo.getCsName() + "\",\"foradd\":\"欠款逾期不还，\",\"text\":\"法院提起诉讼/仲裁。12小时内未还款\",\"content\":\"放弃协商，一旦法院受理\",\"forback\":\"传票\",\"manage\":\"诉讼/仲裁准备\",\"csphone\":\"16678448889\"}";
+        }
+        return json;
     }
 
     private void insertSms(CsSmsPo csSmsPo, SendSmsRequest request) {
