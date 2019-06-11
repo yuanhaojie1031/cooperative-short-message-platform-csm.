@@ -5,6 +5,7 @@ public class CsSmsPo {
     private String templateCode;
     private String csName;
     private int userId;
+    private String publicPhone;
 
     public String getCsPhone() {
         return csPhone;
@@ -36,5 +37,13 @@ public class CsSmsPo {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public String getPublicPhone() {
+        return publicPhone;
+    }
+
+    public void setPublicPhone(String publicPhone) {
+        this.publicPhone = publicPhone;
     }
 }

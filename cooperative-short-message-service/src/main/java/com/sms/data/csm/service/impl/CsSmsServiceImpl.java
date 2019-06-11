@@ -106,18 +106,17 @@ public class CsSmsServiceImpl implements CsSmsService {
     }
 
     private String selectTemplateCode(CsSmsPo csSmsPo) {
-        System.out.println("调用selectTemplateCode方法");
         String json = null;
         if ("SMS_167181265".equals(csSmsPo.getTemplateCode())) {
-            json = "{\"name\":\"" + csSmsPo.getCsName() + "\",\"foradd\":\"涉嫌恶意拖欠，多次催收\",\"conx\":\"相关材料\",\"content\":\"司法机关处理\",\"csphone\":\"17743598872\"}";
+            json = "{\"name\":\"" + csSmsPo.getCsName() + "\",\"foradd\":\"涉嫌恶意拖欠，多次催收\",\"conx\":\"相关材料\",\"content\":\"司法机关处理\",\"csphone\":\""+csSmsPo.getPublicPhone()+"\"}";
         } else if ("SMS_167181271".equals(csSmsPo.getTemplateCode())) {
-            json = "{\"name\":\"" + csSmsPo.getCsName() + "\",\"foradd\":\"严重逾期情况，以及警告无效，\",\"conx\":\"案处理，保全国家资产，\",\"content\":\"立即还款，以免\",\"sendtext\":\"不良记录\",\"foreach\":\"刑事案件\",\"manage\":\"引起恶性后果\",\"csphone\":\"16602257788\"}";
+            json = "{\"name\":\"" + csSmsPo.getCsName() + "\",\"foradd\":\"严重逾期情况，以及警告无效，\",\"conx\":\"案处理，保全国家资产，\",\"content\":\"立即还款，以免\",\"sendtext\":\"不良记录\",\"foreach\":\"刑事案件\",\"manage\":\"引起恶性后果\",\"csphone\":\""+csSmsPo.getPublicPhone()+"\"}";
         } else if ("SMS_167370558".equals(csSmsPo.getTemplateCode())) {
-            json = "{\"name\":\"" + csSmsPo.getCsName() + "\",\"foradd\":\"欠款长时间逾期，\",\"text\":\"报失信被执行人名单，\",\"conx\":\"法院向社会公布\",\"sendtext\":\"施强制划扣、限制融资\",\"forback\":\"限制高消费等惩戒。12小时内\",\"handle\":\"上报名单\",\"manage\":\"案件负责人协商还款\",\"phone\":\"16601157503\"}";
+            json = "{\"name\":\"" + csSmsPo.getCsName() + "\",\"foradd\":\"欠款长时间逾期，\",\"text\":\"报失信被执行人名单，\",\"conx\":\"法院向社会公布\",\"sendtext\":\"施强制划扣、限制融资\",\"forback\":\"限制高消费等惩戒。12小时内\",\"handle\":\"上报名单\",\"manage\":\"案件负责人协商还款\",\"phone\":\""+csSmsPo.getPublicPhone()+"\"}";
         } else if ("SMS_167365639".equals(csSmsPo.getTemplateCode())) {
-            json = "{\"name\":\"" + csSmsPo.getCsName() + "\",\"foradd\":\"美团欠款一案多次\",\"text\":\"均不理会，恶意逃避催收\",\"manage\":\"立即采取报案措施，具体\",\"csphone\":\"16601157503\"}";
+            json = "{\"name\":\"" + csSmsPo.getCsName() + "\",\"foradd\":\"美团欠款一案多次\",\"text\":\"均不理会，恶意逃避催收\",\"manage\":\"立即采取报案措施，具体\",\"csphone\":\""+csSmsPo.getPublicPhone()+"\"}";
         } else if ("SMS_167365644".equals(csSmsPo.getTemplateCode())) {
-            json = "{\"name\":\"" + csSmsPo.getCsName() + "\",\"foradd\":\"欠款逾期不还，\",\"text\":\"法院提起诉讼/仲裁。12小时内未还款\",\"content\":\"放弃协商，一旦法院受理\",\"forback\":\"传票\",\"manage\":\"诉讼/仲裁准备\",\"csphone\":\"16678448889\"}";
+            json = "{\"name\":\"" + csSmsPo.getCsName() + "\",\"foradd\":\"欠款逾期不还，\",\"text\":\"法院提起诉讼/仲裁。12小时内未还款\",\"content\":\"放弃协商，一旦法院受理\",\"forback\":\"传票\",\"manage\":\"诉讼/仲裁准备\",\"csphone\":\""+csSmsPo.getPublicPhone()+"\"}";
         }
         return json;
     }

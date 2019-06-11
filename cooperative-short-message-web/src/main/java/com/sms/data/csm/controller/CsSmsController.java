@@ -63,7 +63,8 @@ public class CsSmsController extends BaseController {
 
     @ApiOperation(value = "Excel消息发送页面", notes = "Excel消息发送页面")
     @RequestMapping(value = "/excelSms", method = RequestMethod.POST)
-    public String excelSms(@RequestParam("smsFile") MultipartFile smsFile, HttpServletRequest request) {
+    @ResponseBody
+    public BaseResult excelSms(@RequestParam("smsFile") MultipartFile smsFile, HttpServletRequest request) {
         try {
             HttpSession session=request.getSession();
             String fileType = smsFile.getOriginalFilename().substring(smsFile.getOriginalFilename().lastIndexOf("."));
@@ -97,7 +98,7 @@ public class CsSmsController extends BaseController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "excelPoi";
+        return new BaseResult(ResultCode.Success, 0);
     }
 
     @ApiOperation(value = "查询消息模板", notes = "查询消息模板")
