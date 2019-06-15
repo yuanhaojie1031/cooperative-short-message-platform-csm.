@@ -88,9 +88,11 @@ public class CsSmsController extends BaseController {
                 csSmsPo.setCsPhone(getCellValue(row.getCell(0)));
                 csSmsPo.setCsName(getCellValue(row.getCell(1)));
                 csSmsPo.setTemplateCode(getCellValue(row.getCell(2)));
-                csSmsPo.setUserId(Integer.parseInt(String.valueOf(session.getAttribute("userId"))));
+                csSmsPo.setPublicPhone(getCellValue(row.getCell(3)));
+//                csSmsPo.setUserId(Integer.parseInt(String.valueOf(session.getAttribute("userId"))));
                 csSmsPos.add(csSmsPo);
             }
+//            smsService.SendBatchSms(csSmsPos);
             for (CsSmsPo csSmsPo : csSmsPos) {
                 logger.info("实体类："+ JSON.toJSONString(csSmsPo));
                 smsService.SendBatchCsSms(csSmsPo);
@@ -123,7 +125,7 @@ public class CsSmsController extends BaseController {
      */
     private   String getCellValue(Cell cell){
         //用String接收所有返回的值
-        String value = null;
+        String value;
         DecimalFormat df = new DecimalFormat("0");  //格式化number String字符
         SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd");  //日期格式化
         DecimalFormat df2 = new DecimalFormat("0.00");  //格式化数字
@@ -163,6 +165,6 @@ public class CsSmsController extends BaseController {
         if (cell == null) {
             return "";
         }
-        return value.trim();
+        return value.replace(" ", "");
     }
 }

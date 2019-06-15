@@ -11,7 +11,8 @@ public interface CsSmsService {
      * @param csSmsPo
      */
     int SendCsSms(CsSmsPo csSmsPo);
-    void SendBatchCsSms(CsSmsPo csSmsPo);
+    void SendBatchSms(List<CsSmsPo> csSmsPos);
+    void SendBatchCsSms(CsSmsPo csSmsPos);
     List<CsTemplateCode> selectCsTemplateCodeAll();
     CsTemplateCode selectCsTemplateCode(String templateCode);
 
