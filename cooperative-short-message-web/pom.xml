@@ -20,6 +20,13 @@
 
     <dependencies>
 
+            <!-- Redis-Jedis -->
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>2.9.0</version>
+            </dependency>
+
         <!--导入子项    begin -->
         <dependency>
             <groupId>com.sms.data.csm</groupId>

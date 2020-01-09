@@ -171,6 +171,10 @@ public class CsSmsServiceImpl implements CsSmsService {
             json = "{\"name\":\"" + csSmsPo.getCsName() + "\",\"document\":\"欠 款拖欠一案，报 案文书\",\"address\":\"当地分 局。24小时内\",\"handle\":\"立 案结果，限你于12小时内回电\",\"phone\":\""+csSmsPo.getPublicPhone()+"\"}";
         }else if ("SMS_167960671".equals(csSmsPo.getTemplateCode())) {
             json = "{\"name\":\"" + csSmsPo.getCsName() + "\",\"sendtext\":\"公安执法人员及我方律师团队已上门取证\",\"forback\":\"立案审核，报案文书\",\"address\":\"户籍所在地，24小时内\",\"manage\":\"立案结果，限你于24小时内回电说明\",\"phone\":\""+csSmsPo.getPublicPhone()+"\"}";
+        }else if ("SMS_168590325".equals(csSmsPo.getTemplateCode())) {
+            json = "{\"name\":\"" + csSmsPo.getCsName() + "\",\"cargo\":\"将向法院提起诉讼仲裁。法院传票\",\"address\":\"户籍地，请注意查收并做好应诉准备\",\"phone\":\""+csSmsPo.getPublicPhone()+"\"}";
+        }else if ("SMS_168590312".equals(csSmsPo.getTemplateCode())) {
+            json = "{\"name\":\"" + csSmsPo.getCsName() + "：贷款恶意拖欠，拒绝调查\",\"cargo\":\"家属存在包庇嫌疑，现和解期届满，限你19\",\"manage\":\"欠款\",\"phone\":\""+csSmsPo.getPublicPhone()+"\"}";
         }
         return json;
     }

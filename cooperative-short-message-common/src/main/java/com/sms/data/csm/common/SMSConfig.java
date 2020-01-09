@@ -10,7 +10,7 @@ public class SMSConfig {
 
     public static final String domain = "dysmsapi.aliyuncs.com";//短信API产品域名（接口地址固定，无需修改）
     //替换成你的AK
-    public static final String accessKeyId = "LTAIYFugq4ru04oq";//你的accessKeyId,参考本文档步骤2
+    public static final String accessKeyId = "LTAIPN58XSzRVSK1";//你的accessKeyId,参考本文档步骤2
 
-    public static final String accessKeySecret = "UO55NreHjBHiDGNemN9mGWH7rmyUrv";//你的accessKeySecret，参考本文档步骤2
+    public static final String accessKeySecret = "0E1AbomgKgcJYH8wR5bcfSvmAFCBKQ";//你的accessKeySecret，参考本文档步骤2
 }
